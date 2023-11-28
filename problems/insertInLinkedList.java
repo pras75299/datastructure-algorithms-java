@@ -9,6 +9,24 @@ Notes:
 
 public class Solution{
     public ListNode solve(ListNode A, int B, int C){
+        ListNode n = new ListNode(B); // create a new listnode
+        ListNode temp = A;
+        if(C <= 0){
+            n.next = A;
+            A = n;
+        } else{
+            for(int i = 1; i < C; i++){
+                if(temp.next == null){
+                    temp.next = n;
+                    return A;
+                }
 
+                temp = temp.next;
+            }
+
+            n.next = temp.next;
+            temp.next = n;
+        }    
+        return A;    
     }
 }
